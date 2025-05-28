@@ -1,100 +1,144 @@
-project: "📚 Book Purchase Profitability Analysis"
+# 📚 Book Purchase Profitability Analysis
 
-description: >
-  This project compares two strategies for purchasing school books across multiple bookstores:
-    1️⃣ Buy the entire wishlist from a single bookstore (one shipping fee)
-    2️⃣ Buy each book from the cheapest available bookstore (multiple shipping fees)
-  
-  The analysis takes into account various promotions offered by bookstores such as:
-    - Free shipping thresholds
-    - Percentage discounts
-    - "3 for 2" or "Buy 1 get 1 free" deals
+This project compares two purchasing strategies for school books across multiple online bookstores:
 
-structure:
-  - path: "Data/Lektury_szkolne_baza.xlsx"
-    description: "List of books with individual prices and shipping costs per bookstore"
-  - path: "Data/promocje_księgarnie.xlsx"
-    description: "Bookstore promotions with corresponding Python-formatted discount logic"
-  - path: "Notebooks/Project.ipynb"
-    description: "Main Jupyter Notebook containing the code, test cases, and analysis"
-  - path: "README.yaml"
-    description: "This documentation file"
+1. **Single-store purchase** – Buy all books from one bookstore (one shipping fee).
+2. **Split-by-book purchase** – Buy each book from the cheapest available store (multiple shipping fees).
 
-data_inputs:
-  books:
-    file: "Data/Lektury_szkolne_baza.xlsx"
-    columns:
-      - id księgarni
-      - nazwa książki
-      - cena książki
-      - cena dostawy
-  promotions:
-    file: "Data/promocje_księgarnie.xlsx"
-    columns:
-      - id_księgarni
-      - promotion_name
-      - formula  # Python expression applied to prices/shipping
+The logic also applies real-world bookstore promotions such as:
 
-usage:
-  instructions:
-    - "Open 'Notebooks/Project.ipynb' in Jupyter"
-    - "Ensure both Excel files are available in the 'Data/' folder"
-    - "Execute cells in order: data loading, cleaning, function setup, test cases, and final plots"
-    - "To test different scenarios, update the 'wishlist' list in the test case cells"
+- Free shipping thresholds
+- Percentage discounts
+- "3 for 2" or bundle deals
 
-test_cases:
-  - name: "Test 1 – School Basics"
-    wishlist:
-      - "Opowieści z Narnii: Lew, czarownica i stara szafa"
-      - "W pustyni i w puszczy"
-      - "Akademia pana Kleksa"
-      - "Chłopcy z Placu Broni"
+---
 
-  - name: "Test 2 – Extended Set"
-    wishlist:
-      - "Mały Książę"
-      - "Balladyna"
-      - "Pan Tadeusz"
-      - "Latarnik"
+## 📁 Project Structure
 
-  - name: "Test 3 – Full Class Set"
-    wishlist:
-      - "Syzyfowe prace"
-      - "Zemsta"
-      - "Katarynka"
-      - "Kamienie na szaniec"
+Folders and files:
 
-  - name: "Test 4 – Minimal Basket"
-    wishlist:
-      - "Balladyna"
-      - "Latarnik"
+- `Data/Lektury_szkolne_baza.xlsx` – book prices and shipping info
+- `Data/promocje_księgarnie.xlsx` – discount formulas per bookstore
+- `Notebooks/Project.ipynb` – main Jupyter Notebook with logic, tests, and charts
+- `README.md` – this file
 
-  - name: "Test 5 – Max Value Basket"
-    wishlist:
-      - "Opowieści z Narnii: Lew, czarownica i stara szafa"
-      - "Pan Tadeusz"
-      - "Akademia pana Kleksa"
-      - "Zemsta"
-      - "Syzyfowe prace"
+---
 
-visualization:
-  type: "📊 Bar Chart"
-  description: >
-    The final chart displays a comparison of total purchase costs between:
-      - One-bookstore strategy (with all books in a single shop)
-      - Split-by-book strategy (picking each book from the cheapest source)
+## 📊 Input Data
 
-technologies:
-  - Python 3.12+
-  - Jupyter Notebook
-  - Pandas
-  - Matplotlib
+### `Lektury_szkolne_baza.xlsx`
 
-extensions:
-  - "Export final comparison to Excel/CSV"
-  - "Add interactive wishlist using ipywidgets"
-  - "Detect bookstores that offer the complete wishlist"
-  - "Visual analysis of promotion impact"
+Contains books with their prices and shipping costs per bookstore.
 
-author: "📘 Educational Data Analysis Project"
-license: "MIT"
+Example:
+
+| Store ID | Book Title                                     | Price    | Shipping |
+|----------|------------------------------------------------|----------|----------|
+| 1        | Opowieści z Narnii: Lew, czarownica...         | 27.50 zł | 13 zł    |
+| 2        | Mały Książę                                    | 20.50 zł | 15 zł    |
+
+### `promocje_księgarnie.xlsx`
+
+Contains dynamic promotion logic written in Python (to simulate discounts).
+
+Example:
+
+| Store ID | Promotion Name            | Formula                                      |
+|----------|---------------------------|----------------------------------------------|
+| 1        | Free shipping over 100 zł | `if total_price >= 100: shipping_cost = 0`   |
+| 3        | 3 for 2                   | `total_price -= sum(prices[:len(prices)//3])`|
+
+---
+
+## ▶️ How to Run the Notebook
+
+1. Open `Notebooks/Project.ipynb` in Jupyter Notebook.
+2. Make sure both Excel files are in the `Data/` folder.
+3. Run cells in order:
+   - Load and clean data
+   - Define promotion functions
+   - Run test cases
+   - View cost comparison and plots
+
+---
+
+## 🧪 Test Cases
+
+The notebook includes 5 test cases, such as:
+
+**Test 1 – School Basics**
+
+- Opowieści z Narnii
+- W pustyni i w puszczy
+- Akademia pana Kleksa
+- Chłopcy z Placu Broni
+
+**Test 2 – Extended Set**
+
+- Mały Książę
+- Balladyna
+- Pan Tadeusz
+- Latarnik
+
+**Test 3 – Full Class Set**
+
+- Syzyfowe prace
+- Zemsta
+- Katarynka
+- Kamienie na szaniec
+
+**Test 4 – Minimal Basket**
+
+- Balladyna
+- Latarnik
+
+**Test 5 – Max Value Basket**
+
+- Opowieści z Narnii
+- Pan Tadeusz
+- Akademia pana Kleksa
+- Zemsta
+- Syzyfowe prace
+
+---
+
+## 📈 Chart Comparison
+
+At the end of the notebook, a bar chart visualizes the difference in total cost between:
+
+- Buying everything from one store
+- Splitting the order across cheapest options
+
+---
+
+## 🧰 Technologies Used
+
+- Python 3.12+
+- Jupyter Notebook
+- Pandas
+- Matplotlib
+
+---
+
+## 🚀 Possible Extensions
+
+- Export result tables to `.xlsx` or `.csv`
+- Add an interactive wishlist editor with `ipywidgets`
+- Show which stores offer full sets
+- Add promo effectiveness analysis per store
+
+---
+
+## 👥 Authors
+
+- **Marianna Kolinko**
+- **Zoriana Szumada**
+- **Janek Zdaniewicz**
+- **Alicja Ciurlej**
+
+
+**Educational Data Analysis Project**
+
+Created for practical learning in price comparison, data manipulation, and promotion simulation.
+
+License: MIT
