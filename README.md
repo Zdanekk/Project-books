@@ -1,15 +1,19 @@
 # 📚 Book Purchase Profitability Analysis
 
-This project compares two purchasing strategies for school books across multiple online bookstores:
+This project compares **three purchasing strategies** for school books across multiple online bookstores:
 
 1. **Single-store purchase** – Buy all books from one bookstore (one shipping fee).
 2. **Split-by-book purchase** – Buy each book from the cheapest available store (multiple shipping fees).
+3. **Optimal mixed-store combination** – Choose the cheapest possible mix (e.g. 2+2 books from different stores) taking into account:
+   - Book prices
+   - Shipping costs
+   - Active promotions
 
 The logic also applies real-world bookstore promotions such as:
 
 - Free shipping thresholds
-- Percentage discounts
-- "3 for 2" or bundle deals
+- Percentage discounts (e.g. -10% from 3 books)
+- Bundle offers (e.g. 3 for 2 or buy one, get one free)
 
 ---
 
@@ -18,8 +22,8 @@ The logic also applies real-world bookstore promotions such as:
 Folders and files:
 
 - `Data/Lektury_szkolne_baza.xlsx` – book prices and shipping info
-- `Data/promocje_księgarnie.xlsx` – discount formulas per bookstore
-- `Notebooks/Project.ipynb` – main Jupyter Notebook with logic, tests, and charts
+- `Data/promocje_księgarnie.xlsx` – discount formulas per bookstore (Python expressions)
+- `Notebooks/Project.ipynb` – main Jupyter Notebook with logic, tests, and visualizations
 - `README.md` – this file
 
 ---
@@ -39,7 +43,7 @@ Example:
 
 ### `promocje_księgarnie.xlsx`
 
-Contains dynamic promotion logic written in Python (to simulate discounts).
+Contains promotion formulas in Python, applied only if conditions are met.
 
 Example:
 
@@ -53,61 +57,65 @@ Example:
 ## ▶️ How to Run the Notebook
 
 1. Open `Notebooks/Project.ipynb` in Jupyter Notebook.
-2. Make sure both Excel files are in the `Data/` folder.
-3. Run cells in order:
-   - Load and clean data
-   - Define promotion functions
+2. Ensure both Excel files are present in the `Data/` folder.
+3. Execute the notebook step-by-step:
+   - Load and normalize data
+   - Parse and assign promotion formulas
    - Run test cases
-   - View cost comparison and plots
+   - Compare three strategies
+   - Generate summary bar chart
 
 ---
 
 ## 🧪 Test Cases
 
-The notebook includes 5 test cases, such as:
+The notebook includes 5 defined test sets:
 
 **Test 1 – School Basics**
-
 - Opowieści z Narnii
 - W pustyni i w puszczy
 - Akademia pana Kleksa
 - Chłopcy z Placu Broni
 
 **Test 2 – Extended Set**
-
 - Mały Książę
 - Balladyna
 - Pan Tadeusz
 - Latarnik
 
 **Test 3 – Full Class Set**
-
 - Syzyfowe prace
 - Zemsta
 - Katarynka
 - Kamienie na szaniec
 
 **Test 4 – Minimal Basket**
-
 - Balladyna
 - Latarnik
 
 **Test 5 – Max Value Basket**
-
 - Opowieści z Narnii
 - Pan Tadeusz
 - Akademia pana Kleksa
 - Zemsta
 - Syzyfowe prace
 
+Each test prints:
+- Bookstore assignments
+- Promotions used (if applicable)
+- Total price per strategy
+
 ---
 
 ## 📈 Chart Comparison
 
-At the end of the notebook, a bar chart visualizes the difference in total cost between:
+The notebook ends with a bar chart that visually compares the three strategies:
 
-- Buying everything from one store
-- Splitting the order across cheapest options
+- **Option 1:** All books in one bookstore
+- **Option 2:** Cheapest price per book (split orders)
+- **Option 3:** Optimized mix (best combo with working promotions)
+
+You can adjust test sets or extend the list for your own analysis.
 
 ---
 
@@ -115,17 +123,17 @@ At the end of the notebook, a bar chart visualizes the difference in total cost 
 
 - Python 3.12+
 - Jupyter Notebook
-- Pandas
-- Matplotlib
+- Pandas – for data handling
+- Matplotlib – for visualization
 
 ---
 
 ## 🚀 Possible Extensions
 
-- Export result tables to `.xlsx` or `.csv`
-- Add an interactive wishlist editor with `ipywidgets`
-- Show which stores offer full sets
-- Add promo effectiveness analysis per store
+- Export results to `.csv` or `.xlsx`
+- Add an interactive book picker with `ipywidgets`
+- Limit max number of stores per order (e.g. max 2)
+- Add per-store summary stats or rankings
 
 ---
 
@@ -136,9 +144,7 @@ At the end of the notebook, a bar chart visualizes the difference in total cost 
 - **Janek Zdaniewicz**
 - **Alicja Ciurlej**
 
-
-**Educational Data Analysis Project**
-
-Created for practical learning in price comparison, data manipulation, and promotion simulation.
+**Educational Data Analysis Project**  
+Created for practical learning in price comparison, data processing, optimization, and automation.
 
 License: MIT
