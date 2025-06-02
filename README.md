@@ -1,6 +1,6 @@
 # 📚 Book Purchase Profitability Analysis
 
-This project compares **three purchasing strategies** for school books across multiple online bookstores:
+This project compares **four purchasing strategies** for school books across multiple online bookstores:
 
 1. **Single-store purchase** – Buy all books from one bookstore (one shipping fee).
 2. **Split-by-book purchase** – Buy each book from the cheapest available store (multiple shipping fees).
@@ -8,6 +8,7 @@ This project compares **three purchasing strategies** for school books across mu
    - Book prices
    - Shipping costs
    - Active promotions
+4. **Scalable heuristic strategy** – A fast approximation that selects the cheapest offer per book and applies available promotions per store. Optimized for performance and large datasets.
 
 The logic also applies real-world bookstore promotions such as:
 
@@ -62,7 +63,7 @@ Example:
    - Load and normalize data
    - Parse and assign promotion formulas
    - Run test cases
-   - Compare three strategies
+   - Compare four strategies
    - Generate summary bar chart
 
 ---
@@ -109,11 +110,12 @@ Each test prints:
 
 ## 📈 Chart Comparison
 
-The notebook ends with a bar chart that visually compares the three strategies:
+The notebook ends with a bar chart that visually compares all four strategies:
 
 - **Option 1:** All books in one bookstore
 - **Option 2:** Cheapest price per book (split orders)
 - **Option 3:** Optimized mix (best combo with working promotions)
+- **Option 4:** Scalable strategy (heuristic, fast and suitable for large-scale use)
 
 You can adjust test sets or extend the list for your own analysis.
 
