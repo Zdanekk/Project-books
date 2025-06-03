@@ -8,7 +8,6 @@ This project compares **four purchasing strategies** for school books across mul
    - Book prices
    - Shipping costs
    - Active promotions
-4. **Scalable heuristic strategy** – A fast approximation that selects the cheapest offer per book and applies available promotions per store. Optimized for performance and large datasets.
 
 The logic also applies real-world bookstore promotions such as:
 
@@ -115,7 +114,6 @@ The notebook ends with a bar chart that visually compares all four strategies:
 - **Option 1:** All books in one bookstore
 - **Option 2:** Cheapest price per book (split orders)
 - **Option 3:** Optimized mix (best combo with working promotions)
-- **Option 4:** Scalable strategy (heuristic, fast and suitable for large-scale use)
 
 You can adjust test sets or extend the list for your own analysis.
 
